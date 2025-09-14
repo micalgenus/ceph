@@ -67,6 +67,11 @@ if(WITH_FUSE)
 endif(WITH_FUSE)
 install(TARGETS ceph-objectstore-tool DESTINATION bin)
 
+add_executable(ceph-osdmap-restore-tool
+  osdmap_restore_tool.cc)
+target_link_libraries(ceph-osdmap-restore-tool osd os global Boost::program_options ${CMAKE_DL_LIBS})
+install(TARGETS ceph-osdmap-restore-tool DESTINATION bin)
+
 if(WITH_LIBCEPHFS)
 if(WITH_TESTS)
   add_executable(ceph-client-debug ceph-client-debug.cc)
